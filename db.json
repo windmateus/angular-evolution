@@ -1,16 +1,16 @@
 {
-    "games": [
-        {
-            "id": 1,
-            "name": "Street Fighter"
-        },
-        {
-            "id": 2,
-            "name": "Halo"
-        },
-        {
-            "id": 3,
-            "name": "The Last of Us"
-        }
-    ]
+  "games": [
+      {
+          "id": 1,
+          "name": "Street Fighter"
+      },
+      {
+          "id": 2,
+          "name": "Halo"
+      },
+      {
+          "id": 3,
+          "name": "The Last of Us"
+      }
+  ]
 }

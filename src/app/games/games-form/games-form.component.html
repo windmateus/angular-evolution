@@ -1,0 +1,33 @@
+<form
+  class="needs-validation"
+  novalidate
+  [formGroup]="form"
+  style="padding-top: 10px"
+>
+
+  <div class="form-row">
+    <div [ngClass]="classe" role="alert">
+      {{mensagem}}
+    </div>
+    <div class="col-sm-12">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Name"
+        formControlName="name"
+      />
+    </div>
+  </div>
+
+  <div style="margin-top: 10px">
+    <button type="submit" class="btn btn-primary" (click)="save()">
+      Salvar
+    </button>
+    &nbsp;
+    <button type="button" class="btn btn-secondary" (click)="cancel()">
+      Cancelar
+    </button>
+  </div>
+</form>
