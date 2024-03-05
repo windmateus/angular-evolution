@@ -1,29 +1,28 @@
 <div class="card mt-3">
     <div class="card-header">
-        <div class="float-left">
+        <div class="float-start">
             <h4>Games</h4>
         </div>
-        <div class="float-right">
+        <div class="float-end">
             <button type="button" class="btn btn-primary" [routerLink]="['new']">New</button>
         </div>
     </div>
     <div class="card-body">
         <ng-template #loadingError>
-            <div *ngIf="erro$ | async; else loading" class="alert alert-danger" role="alert">
-              {{errorMessage}}
+            <div *ngIf="err$ | async; else loading" class="alert alert-danger" role="alert">
+                {{errorMessage}}
             </div>
             <ng-template #loading>
                 <span>loading...</span>
             </ng-template>
         </ng-template>
-        <div *ngIf="sucessoExclusao" class="alert alert-success" role="alert">
-          Registro excluído com sucesso
+        <div *ngIf="exclusionSuccess" class="alert alert-success" role="alert">
+            Game deleted
         </div>
-        <table class="styled-table" *ngIf="games$ | async as games; else loadingError"
-        aria-describedby="Game List">
+        <table class="styled-table" *ngIf="games$ | async as games; else loadingError" aria-describedby="Game List">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Id</th>
                     <th>Name</th>
                     <th></th>
                 </tr>
@@ -33,7 +32,7 @@
                     <td style="width: 10%;">{{ g.id }}</td>
                     <td style="width: 70%;">{{ g.name }}</td>
                     <td style="width: 30%;">
-                        <span class="float-right">
+                        <span class="float-end">
                             <button class="btn btn-warning" (click)="edit(g.id)">
                                 Alterar
                             </button>
@@ -51,8 +50,8 @@
 
 <ng-template #deleteModal>
     <div class="modal-body text-center">
-      <p>Tem certeza que deseja excluir esse registro?</p>
-      <button type="button" class="btn btn-secondary" (click)="confirmDelete()">Sim</button>
-      <button type="button" class="btn btn-primary" (click)="giveupDelete()">Não</button>
+        <p>Are you sure?</p>
+        <button type="button" class="btn btn-secondary" (click)="confirmDelete()">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="giveupDelete()">No</button>
     </div>
 </ng-template>

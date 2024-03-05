@@ -5,7 +5,7 @@ import { GamesFormComponent } from './games-form/games-form.component';
 
 const routes: Routes = [
   { path: '', component: GamesListComponent },
-  { path: 'new', component: GamesFormComponent },  
+  { path: 'new', component: GamesFormComponent },
   { path: 'edit/:id', component: GamesFormComponent },
 ];
 
@@ -13,4 +13,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class GamesRoutingModule {}
+export class GamesRoutingModule { }

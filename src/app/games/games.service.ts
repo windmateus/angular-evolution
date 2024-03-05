@@ -8,25 +8,25 @@ import { delay, take, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class GamesService {
-  private readonly API = `${environment.API}games`;  
+  private readonly API = `${environment.API}games`;
 
-  constructor(private http: HttpClient) { 
-    this.list();    
+  constructor(private http: HttpClient) {
+    this.list();
   }
 
   list() {
     return this.http.get<Game[]>(this.API)
       .pipe(
-        delay(1500),
+        delay(700),         // This is just to force a slower execution for us to see the "loading" indicator in screen
         tap(console.log)
-      );    
+      );
   }
 
   /** take(1) unsubscribes */
 
   loadByID(id: number) {
     return this.http.get<Game>(`${this.API}/${id}`).pipe(take(1));
-  }  
+  }
 
   private create(game: Game) {
     return this.http.post(this.API, game).pipe(take(1));

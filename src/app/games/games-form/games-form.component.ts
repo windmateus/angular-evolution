@@ -16,8 +16,8 @@ import { CommonModule, Location } from "@angular/common";
 export class GamesFormComponent {
 
   form!: FormGroup;
-  mensagem!: string;
-  classe: string = 'col-sm-12';
+  message!: string;
+  class: string = 'col-sm-12';
 
   subscription!: Subscription;
 
@@ -73,24 +73,24 @@ export class GamesFormComponent {
 
   save() {
     if (this.form.valid) {
-      let msgSuccesso: string = 'New game created!';
-      let msgErro: string = 'Error when including';
+      let msgSuccess: string = 'New game created!';
+      let msgError: string = 'Error when including';
       if (this.form.value.id) {
-        msgSuccesso = 'Game saved!';
-        msgErro = 'Error when saving';
+        msgSuccess = 'Game saved!';
+        msgError = 'Error when saving';
       }
       this.subscription = this.service.save(this.form.value).subscribe( {
         next: () => {
-          this.mensagem = msgSuccesso;
-          this.classe += ' alert alert-success';
+          this.message = msgSuccess;
+          this.class += ' alert alert-success';
         },
         error: () => {
-          this.mensagem = msgErro;
-          this.classe += ' alert alert-danger';
+          this.message = msgError;
+          this.class += ' alert alert-danger';
         },
         complete: () => setTimeout(() => {
           this.location.back();
-        }, 1500)
+        }, 750)   // This is just to force a slower execution for us to see the success message in the screen
       }
       );
     }
