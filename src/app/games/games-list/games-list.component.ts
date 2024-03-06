@@ -41,7 +41,7 @@ export class GamesListComponent implements OnInit {
     this.games$ = this.service.list()
       .pipe(
         catchError(err => {
-          this.errorMessage = 'Error when loading games';
+          this.errorMessage = 'Error when listing';
           this.err$.next(true);
           return EMPTY;
         })
