@@ -96,10 +96,6 @@ export class GamesFormComponent {
     }
   }
 
-  cancel() {
-    this.form.reset();
-  }
-
   ngOnDestroy() {
     if (this.subscription)
       this.subscription.unsubscribe();
