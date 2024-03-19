@@ -4,13 +4,20 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { GamesRoutingModule } from './games-routing.module';
 import { GamesListComponent } from './games-list/games-list.component';
+import { GamesFormComponent } from './games-form/games-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
+  declarations: [
+    GamesListComponent,
+    GamesFormComponent
+  ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     GamesRoutingModule,
-    GamesListComponent,
     ModalModule.forRoot()
   ]
 })

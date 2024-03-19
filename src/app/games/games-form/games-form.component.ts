@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription, map, switchMap } from 'rxjs';
 import { GamesService } from '../games.service';
+import { ActivatedRoute } from '@angular/router';
 import { Game } from '../game';
 import { CommonModule, Location } from "@angular/common";
 
+
 @Component({
   selector: 'app-games-form',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './games-form.component.html',
-  styleUrl: './games-form.component.scss'
+  styleUrls: ['./games-form.component.scss']
 })
 export class GamesFormComponent {
 

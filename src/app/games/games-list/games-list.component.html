@@ -1,63 +1,57 @@
 <div class="card mt-3">
-  <div class="card-header">
-    <div class="float-start">
-      <h4>Games</h4>
-    </div>
-    <div class="float-end">
-      <button type="button" class="btn btn-primary" [routerLink]="['new']">New</button>
-    </div>
-  </div>
-  <div class="card-body">
-    @if (exclusionSuccess) {
-      <div class="alert alert-success" role="alert">
-        Game deleted
-      </div>
-    }
-    @if (games$ | async; as games) {
-      <table class="styled-table" aria-describedby="Game List">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (g of games; track g) {
-            <tr>
-              <td style="width: 10%;">{{ g.id }}</td>
-              <td style="width: 70%;">{{ g.name }}</td>
-              <td style="width: 30%;">
-                <span class="float-end">
-                  <button class="btn btn-warning" (click)="edit(g.id)">
-                    Alterar
-                  </button>
-                  &nbsp;
-                  <button class="btn btn-danger" (click)="delete(g)">
-                    Excluir
-                  </button>
-                </span>
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    } @else {
-      @if (err$ | async) {
-        <div class="alert alert-danger" role="alert">
-          {{errorMessage}}
+    <div class="card-header">
+        <div class="float-start">
+            <h4>Games</h4>
         </div>
-      } @else {
-        <span>loading...</span>
-      }
-    }
-  </div>
+        <div class="float-end">
+            <button type="button" class="btn btn-primary" [routerLink]="['new']">New</button>
+        </div>
+    </div>
+    <div class="card-body">
+        <ng-template #loadingError>
+            <div *ngIf="err$ | async; else loading" class="alert alert-danger" role="alert">
+                {{errorMessage}}
+            </div>
+            <ng-template #loading>
+                <span>loading...</span>
+            </ng-template>
+        </ng-template>
+        <div *ngIf="exclusionSuccess" class="alert alert-success" role="alert">
+            Game deleted
+        </div>
+        <table class="styled-table" *ngIf="games$ | async as games; else loadingError" aria-describedby="Game List">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let g of games">
+                    <td style="width: 10%;">{{ g.id }}</td>
+                    <td style="width: 70%;">{{ g.name }}</td>
+                    <td style="width: 30%;">
+                        <span class="float-end">
+                            <button class="btn btn-warning" (click)="edit(g.id)">
+                                Alterar
+                            </button>
+                            &nbsp;
+                            <button class="btn btn-danger" (click)="delete(g)">
+                                Excluir
+                            </button>
+                        </span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <ng-template #deleteModal>
-  <div class="modal-body text-center">
-    <p>Are you sure?</p>
-    <button type="button" class="btn btn-secondary" (click)="confirmDelete()">Yes</button>
-    <button type="button" class="btn btn-primary" (click)="giveupDelete()">No</button>
-  </div>
+    <div class="modal-body text-center">
+        <p>Are you sure?</p>
+        <button type="button" class="btn btn-secondary" (click)="confirmDelete()">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="giveupDelete()">No</button>
+    </div>
 </ng-template>

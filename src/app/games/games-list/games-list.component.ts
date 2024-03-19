@@ -2,16 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Game } from '../game';
 import { EMPTY, Observable, Subject, catchError } from 'rxjs';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { GamesService } from '../games.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-games-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
   templateUrl: './games-list.component.html',
-  styleUrl: './games-list.component.scss'
+  styleUrls: ['./games-list.component.scss']
 })
 export class GamesListComponent implements OnInit {
 
@@ -41,7 +38,7 @@ export class GamesListComponent implements OnInit {
     this.games$ = this.service.list()
       .pipe(
         catchError(err => {
-          this.errorMessage = 'Error when listing';
+          this.errorMessage = 'Error when loading games';
           this.err$.next(true);
           return EMPTY;
         })
@@ -79,6 +76,6 @@ export class GamesListComponent implements OnInit {
 
   giveupDelete() {
     this.deleteModalRef.hide();
-  }
+  }  
 
 }
