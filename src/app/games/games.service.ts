@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Game } from './game';
 import { delay, take, tap } from 'rxjs';
@@ -47,4 +47,5 @@ export class GamesService {
   delete(id: number) {
     return this.http.delete(`${this.API}/${id}`).pipe()
   }
+
 }

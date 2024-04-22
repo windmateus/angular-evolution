@@ -6,10 +6,12 @@ describe('GamesFormComponent', () => {
   let component: GamesFormComponent;
   let fixture: ComponentFixture<GamesFormComponent>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [GamesFormComponent]
-    });
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [GamesFormComponent]
+    })
+    .compileComponents();
+    
     fixture = TestBed.createComponent(GamesFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
