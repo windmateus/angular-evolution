@@ -4,7 +4,7 @@
           <h4>Games</h4>
       </div>
       <div class="float-end">
-          <button type="button" class="btn btn-primary" [routerLink]="['new']">New</button>
+          <button type="button" class="btn btn-primary" routerLink="/new">New</button>
       </div>
   </div>
   <div class="card-body">
@@ -30,9 +30,9 @@
           <tbody>
               <tr *ngFor="let g of games">
                   <td style="width: 10%;">{{ g.id }}</td>
-                  <td style="width: 70%;">{{ g.name }}</td>
-                  <td style="width: 30%;">
-                      <span class="float-end">
+                  <td style="width: 65%;">{{ g.name }}</td>
+                  <td style="width: 25%;">
+                      <!-- <span class="float-end"> -->
                           <button class="btn btn-warning" (click)="edit(g.id)">
                               Alterar
                           </button>
@@ -40,7 +40,7 @@
                           <button class="btn btn-danger" (click)="delete(g)">
                               Excluir
                           </button>
-                      </span>
+                      <!-- </span> -->
                   </td>
               </tr>
           </tbody>

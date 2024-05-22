@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { EMPTY, Observable, Subject } from 'rxjs';
 import { Game } from '../game';
-import { EMPTY, Observable, Subject, catchError } from 'rxjs';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { GamesService } from '../games.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-games-list',
   templateUrl: './games-list.component.html',
-  styleUrls: ['./games-list.component.scss']
+  styleUrls: ['./games-list.component.css']
 })
 export class GamesListComponent implements OnInit {
 
@@ -19,14 +19,14 @@ export class GamesListComponent implements OnInit {
   errorMessage!: string;
   exclusionSuccess = false;
 
-  deleteModalRef!: BsModalRef;
-  @ViewChild('deleteModal', { static: true }) deleteModal: any;
+  // deleteModalRef!: BsModalRef;
+  // @ViewChild('deleteModal', { static: true }) deleteModal: any;
 
   constructor(
     private service: GamesService,
     private router: Router,
     private route: ActivatedRoute,
-    private modalService: BsModalService
+    // private modalService: BsModalService
   ) {
   }
 
@@ -51,7 +51,10 @@ export class GamesListComponent implements OnInit {
 
   delete(g: Game) {
     this.selectedGame = g;
-    this.deleteModalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm' })
+    if (confirm('Are you sure?')) {
+      this.confirmDelete();
+    }
+    // this.deleteModalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm' })
   }
 
   confirmDelete() {
@@ -67,7 +70,7 @@ export class GamesListComponent implements OnInit {
           this.err$.next(true);
         },
         complete: () => {
-          this.deleteModalRef.hide();
+          // this.deleteModalRef.hide();
           this.exclusionSuccess = true;
         }
       }
@@ -75,7 +78,7 @@ export class GamesListComponent implements OnInit {
   }
 
   giveupDelete() {
-    this.deleteModalRef.hide();
+    // this.deleteModalRef.hide();
   }  
 
 }

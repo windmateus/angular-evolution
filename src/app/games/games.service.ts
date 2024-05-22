@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Game } from './game';
-import { delay, take, tap } from 'rxjs';
+import { delay, take, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

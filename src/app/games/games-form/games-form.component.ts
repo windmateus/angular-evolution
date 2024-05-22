@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Subscription, map, switchMap } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { GamesService } from '../games.service';
 import { ActivatedRoute } from '@angular/router';
 import { Game } from '../game';
+import { map, switchMap } from 'rxjs/operators';
 import { CommonModule, Location } from "@angular/common";
 
 
 @Component({
   selector: 'app-games-form',
   templateUrl: './games-form.component.html',
-  styleUrls: ['./games-form.component.scss']
+  styleUrls: ['./games-form.component.css']
 })
-export class GamesFormComponent {
+export class GamesFormComponent implements OnInit {
 
   form!: FormGroup;
   message!: string;
