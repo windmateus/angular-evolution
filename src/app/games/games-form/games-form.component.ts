@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { GamesService } from '../games.service';
 import { ActivatedRoute } from '@angular/router';
@@ -17,6 +16,7 @@ import { CommonModule, Location } from "@angular/common";
 export class GamesFormComponent implements OnInit {
 
   form!: FormGroup;
+  submitted = false;  
   message!: string;
   class: string = 'col-sm-12';
 
@@ -73,6 +73,7 @@ export class GamesFormComponent implements OnInit {
   }
 
   save() {
+    this.submitted = true;    
     if (this.form.valid) {
       let msgSuccess: string = 'New game created!';
       let msgError: string = 'Error when including';
@@ -94,6 +95,17 @@ export class GamesFormComponent implements OnInit {
         }, 750)   // This is just to force a slower execution for us to see the success message in the screen
       }
       );
+    } 
+    else {
+      console.log(this.hasError('name'));
+    }
+  }
+
+  hasError(field: string) {
+    if (this.form.get(field) && this.form.get(field).errors) {
+      return this.form.get(field).errors;
+    } else {
+      return [];
     }
   }
 

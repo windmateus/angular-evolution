@@ -1,10 +1,10 @@
 <div class="card mt-3">
   <div class="card-header">
-      <div class="float-start">
+      <div class="float-left">
           <h4>Games</h4>
       </div>
-      <div class="float-end">
-          <button type="button" class="btn btn-primary" routerLink="/new">New</button>
+      <div class="float-right">
+          <button type="button" class="btn btn-primary" routerLink="/games/new">New</button>
       </div>
   </div>
   <div class="card-body">
@@ -32,26 +32,18 @@
                   <td style="width: 10%;">{{ g.id }}</td>
                   <td style="width: 65%;">{{ g.name }}</td>
                   <td style="width: 25%;">
-                      <!-- <span class="float-end"> -->
+                      <span class="float-right">
                           <button class="btn btn-warning" (click)="edit(g.id)">
-                              Alterar
+                              Edit
                           </button>
                           &nbsp;
                           <button class="btn btn-danger" (click)="delete(g)">
-                              Excluir
+                              Delete
                           </button>
-                      <!-- </span> -->
+                      </span>
                   </td>
               </tr>
           </tbody>
       </table>
   </div>
 </div>
-
-<ng-template #deleteModal>
-  <div class="modal-body text-center">
-      <p>Are you sure?</p>
-      <button type="button" class="btn btn-secondary" (click)="confirmDelete()">Yes</button>
-      <button type="button" class="btn btn-primary" (click)="giveupDelete()">No</button>
-  </div>
-</ng-template>
