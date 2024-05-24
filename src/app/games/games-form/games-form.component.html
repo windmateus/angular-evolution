@@ -4,6 +4,15 @@
     <div [ngClass]="class" role="alert">
       {{message}}
     </div>
+    <div class="alert alert-danger" *ngIf="submitted && hasError('name') && hasError('name')!['required']">
+      Please enter a name
+    </div>
+    <div class="alert alert-danger" *ngIf="submitted && hasError('name') && hasError('name')!['minlength']">
+      Name must have at least {{ hasError('name')!['minlength'].requiredLength }} chars.      
+    </div>
+    <div class="alert alert-danger" *ngIf="submitted && hasError('name') && hasError('name')!['maxlength']">
+      Name must have at most {{ hasError('name')!['maxlength'].requiredLength }} chars.
+    </div>      
     <div class="col-sm-12">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name" />
