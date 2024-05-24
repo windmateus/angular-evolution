@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Subscription, map, switchMap } from 'rxjs';
 import { GamesService } from '../games.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,6 +15,7 @@ import { CommonModule, Location } from "@angular/common";
 export class GamesFormComponent {
 
   form!: FormGroup;
+  submitted = false;  
   message!: string;
   class: string = 'col-sm-12';
 
@@ -71,6 +72,7 @@ export class GamesFormComponent {
   }
 
   save() {
+    this.submitted = true;    
     if (this.form.valid) {
       let msgSuccess: string = 'New game created!';
       let msgError: string = 'Error when including';
@@ -94,6 +96,10 @@ export class GamesFormComponent {
       );
     }
   }
+
+  hasError(field: string): ValidationErrors | null | undefined {
+    return this.form.get(field)?.errors;
+  }   
 
   ngOnDestroy() {
     if (this.subscription)
