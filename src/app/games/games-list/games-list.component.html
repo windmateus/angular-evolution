@@ -47,3 +47,11 @@
       </table>
   </div>
 </div>
+
+<ng-template #deleteModal>
+    <div class="modal-body text-center">
+        <p>Are you sure?</p>
+        <button type="button" class="btn btn-secondary" (click)="confirmDelete()">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="giveupDelete()">No</button>
+    </div>
+</ng-template>

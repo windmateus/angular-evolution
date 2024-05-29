@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { Game } from '../game';
 import { GamesService } from '../games.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { catchError } from 'rxjs/operators';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-games-list',
@@ -19,10 +20,14 @@ export class GamesListComponent implements OnInit {
   errorMessage!: string;
   exclusionSuccess = false;
 
+  deleteModalRef!: BsModalRef;
+  @ViewChild('deleteModal') deleteModal: any;
+
   constructor(
     private service: GamesService,
     private router: Router,
     private route: ActivatedRoute,
+    private modalService: BsModalService
   ) {
   }
 
@@ -47,9 +52,7 @@ export class GamesListComponent implements OnInit {
 
   delete(g: Game) {
     this.selectedGame = g;
-    if (confirm('Are you sure?')) {
-      this.confirmDelete();
-    }
+    this.deleteModalRef = this.modalService.show(this.deleteModal, { class: 'modal-sm' })
   }
 
   confirmDelete() {
@@ -65,10 +68,15 @@ export class GamesListComponent implements OnInit {
           this.err$.next(true);
         },
         complete: () => {
+          this.deleteModalRef.hide();
           this.exclusionSuccess = true;
         }
       }
       );
   }
+
+  giveupDelete() {
+    this.deleteModalRef.hide();
+  }  
 
 }
