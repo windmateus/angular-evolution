@@ -21,7 +21,7 @@ export class GamesListComponent implements OnInit {
   exclusionSuccess = false;
 
   deleteModalRef!: BsModalRef;
-  @ViewChild('deleteModal') deleteModal: any;
+  @ViewChild('deleteModal', { static: true }) deleteModal: any;
 
   constructor(
     private service: GamesService,
