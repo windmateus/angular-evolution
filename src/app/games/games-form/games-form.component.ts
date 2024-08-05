@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { GamesService } from '../games.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +15,7 @@ import { CommonModule, Location } from "@angular/common";
 })
 export class GamesFormComponent implements OnInit {
 
-  form!: FormGroup;
+  form!: UntypedFormGroup;
   submitted = false;  
   message!: string;
   class: string = 'col-sm-12';
@@ -23,7 +23,7 @@ export class GamesFormComponent implements OnInit {
   subscription!: Subscription;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private service: GamesService,
     private route: ActivatedRoute,
     private location: Location,
