@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalModule } from 'ng2-bootstrap/modal';
 
 import { GamesRoutingModule } from './games-routing.module';
 import { GamesListComponent } from './games-list/games-list.component';
@@ -18,7 +17,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     GamesRoutingModule,
-    ModalModule.forRoot()
   ]
 })
 export class GamesModule { }
