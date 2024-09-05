@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { EMPTY, Observable, Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Game } from '../game';
 import { GamesService } from '../games.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { catchError } from 'rxjs/operators';
+import { empty } from "rxjs/observable/empty";
 
 @Component({
   selector: 'app-games-list',
@@ -12,11 +13,11 @@ import { catchError } from 'rxjs/operators';
 })
 export class GamesListComponent implements OnInit {
 
-  games$!: Observable<Game[]>;
-  selectedGame!: Game;
+  games$: Observable<Game[]>;
+  selectedGame: Game;
 
   err$ = new Subject<boolean>();
-  errorMessage!: string;
+  errorMessage: string;
   exclusionSuccess = false;
 
   constructor(
@@ -36,7 +37,7 @@ export class GamesListComponent implements OnInit {
         catchError(err => {
           this.errorMessage = 'Error when loading games';
           this.err$.next(true);
-          return EMPTY;
+          return empty();
         })
       );
   }

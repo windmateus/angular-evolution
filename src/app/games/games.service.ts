@@ -4,9 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Game } from './game';
 import { delay, take, tap } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class GamesService {
   private readonly API = `${environment.API}games`;
 

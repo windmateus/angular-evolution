@@ -15,12 +15,12 @@ import { CommonModule, Location } from "@angular/common";
 })
 export class GamesFormComponent implements OnInit {
 
-  form!: FormGroup;
+  form: FormGroup;
   submitted = false;  
-  message!: string;
+  message: string;
   class: string = 'col-sm-12';
 
-  subscription!: Subscription;
+  subscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -59,7 +59,7 @@ export class GamesFormComponent implements OnInit {
       pipe(
         map((params: any) => params['id']),
         switchMap(
-          (id) => {
+          (id: number) => {
             if (id) {
               return this.service.loadByID(id);
             } else {
