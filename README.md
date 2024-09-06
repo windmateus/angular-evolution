@@ -1,5 +1,19 @@
 # AngularEvolution
 
+The application is a simple CRUD of games. The frontend is developed in Angular and the backend is a simple json-server.
+
+Choose the branch with the Angular version you want and just follow the instructions below.
+- Install node 8.17.0 or [other compatible](https://angular.dev/reference/versions) for this Angular 6 app version
+- If you have some node_modules folder from another version, delete it 
+- Then run this to install the dependencies:
+```sh
+npm install
+```
+In package.json, we have a "server" script to run the json-server backend whose "database" is the file **db.json**. We use **concurrently** to run the frontend at the same time. So, to run the application you just do:
+```sh
+npm run dev
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.0.
 
 ## Development server
