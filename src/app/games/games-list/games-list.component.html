@@ -26,7 +26,7 @@
                   <th>Name</th>
                   <th></th>
               </tr>
-          </thead>
+          </thead>  
           <tbody>
               <tr *ngFor="let g of games">
                   <td style="width: 10%;">{{ g.id }}</td>
@@ -34,11 +34,11 @@
                   <td style="width: 25%;">
                       <span class="float-right">
                           <button class="btn btn-warning" (click)="edit(g.id)">
-                              Edit
+                                &nbsp;Edit&nbsp;
                           </button>
                           &nbsp;
                           <button class="btn btn-danger" (click)="delete(g)">
-                              Delete
+                                Delete
                           </button>
                       </span>
                   </td>
