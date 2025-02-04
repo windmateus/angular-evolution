@@ -7,11 +7,10 @@ import { CommonModule } from '@angular/common';
 import { GamesService } from '../games.service';
 
 @Component({
-  selector: 'app-games-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './games-list.component.html',
-  styleUrl: './games-list.component.scss'
+    selector: 'app-games-list',
+    imports: [CommonModule, RouterModule],
+    templateUrl: './games-list.component.html',
+    styleUrl: './games-list.component.scss'
 })
 export class GamesListComponent implements OnInit {
 

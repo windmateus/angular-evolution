@@ -7,11 +7,10 @@ import { Game } from '../game';
 import { CommonModule, Location } from "@angular/common";
 
 @Component({
-  selector: 'app-games-form',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './games-form.component.html',
-  styleUrl: './games-form.component.scss'
+    selector: 'app-games-form',
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './games-form.component.html',
+    styleUrl: './games-form.component.scss'
 })
 export class GamesFormComponent {
 
